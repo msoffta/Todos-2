@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background: #f4f5fe;
+}
+
+.active {
+  color: #007fff;
+}
+
+td {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+th {
+  padding-bottom: 20px;
+}
+
+tr {
+  text-align: left;
+  border-bottom: 1px solid #d5d7e4;
+}
+
+@layer base {
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]
+  {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield !important;
+    appearance: none;
+  }
+
+  input[type="date"]::-webkit-inner-spin-button,
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
