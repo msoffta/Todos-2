@@ -12,11 +12,11 @@ function App() {
   const base_url = "http://localhost:8080";
 
   useEffect(() => {
+    console.log(timeUpdate);
     if (timeUpdate) {
       setIntervalId(
         setInterval(() => {
-          document.querySelector("input[name='time']").value =
-            getTime();
+          document.querySelector("input[name='time']").value = getTime();
         }, 1000)
       );
     } else {
@@ -64,6 +64,8 @@ function App() {
     } else {
       alert("Что-то пошло не так");
     }
+
+    handleClose();
   }
 
   function changeViewMode(event) {
@@ -86,7 +88,6 @@ function App() {
               onClick={(e) => {
                 e.preventDefault();
                 setShowModal(true);
-                setTimeUpdate(true);
               }}
               className="w-[183px] h-[46px] bg-[#007FFF] rounded-[10px] text-white font-[Gilroy] font-[600]"
             >
@@ -119,7 +120,7 @@ function App() {
                 name="search"
                 type="text"
                 placeholder="Поиск по задачам"
-                className="text-[16px] font-[Gilroy] font-[600] focus: outline-none"
+                className="text-[16px] font-[Gilroy] font-[600] bg-transparent focus:outline-none"
                 onInput={(e) => setSearchQuery(e.target.value)}
               />
             </label>
@@ -150,7 +151,12 @@ function App() {
         </div>
 
         <div className="mt-[50px]">
-          <Todos setUpdate={setUpdate} query={searchQuery} update={update} type={viewMode}></Todos>
+          <Todos
+            setUpdate={setUpdate}
+            query={searchQuery}
+            update={update}
+            type={viewMode}
+          ></Todos>
         </div>
       </div>
       <Modal
@@ -224,6 +230,16 @@ function App() {
                 Готово
               </option>
             </select>
+
+            <p className="flex items-center justify-center gap-2 mt-4 mb-4">
+              <span>Auto Time</span>
+              <label className="switch">
+                <input onClick={(e) => {
+                  setTimeUpdate(e.target.checked);
+                }} type="checkbox" name="check" id="check" />
+                <span className="slider round"></span>
+              </label>
+            </p>
 
             <button
               className="w-full h-12 bg rounded-xl bg-[#0047FF] text-white font-semibold font-[Gilroy]"

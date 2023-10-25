@@ -76,6 +76,7 @@ function Todos({ update, type, query, setUpdate }) {
             onDoubleClick={() => loadChange(todo)}
             data-id={todo.id}
             key={todo.id}
+            className="hover:bg-white transition duration-300 ease"
           >
             <td data-title className="w-[20%]">
               {todo.title}
